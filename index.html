@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelab Kebajikan Sasera</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Kelab Kebajikan Sasera</h1>
+        <p>
+          Semakan yuran guru dan staf berdasarkan rekod Google Sheet rasmi.
+        </p>
+      </header>
+
+      <section class="card" aria-labelledby="semak-yuran">
+        <h2 id="semak-yuran">Semakan Yuran 2025</h2>
+
+        <div class="field">
+          <label for="memberSelect">Pilih nama guru / staf</label>
+          <select id="memberSelect" disabled>
+            <option>Memuatkan data...</option>
+          </select>
+        </div>
+
+        <div id="result" class="result hidden" aria-live="polite"></div>
+        <div id="error" class="error hidden" aria-live="assertive"></div>
+      </section>
+
+      <section class="card" aria-labelledby="panduan">
+        <h2 id="panduan">Format Google Sheet & Sumber Data</h2>
+        <p>Aplikasi membaca data dari Apps Script / Google Sheet (sheet `BAYARAN YURAN`) dengan kolum berikut:</p>
+        <p>
+          <code>BIL</code>, <code>NAMA</code>, <code>BAKI 2025</code>,
+          <code>JAN</code>, <code>FEB</code>, <code>MAC</code>, <code>APR</code>,
+          <code>MEI</code>, <code>JUN</code>, <code>JUL</code>, <code>OGO</code>,
+          <code>SEP</code>, <code>OKT</code>, <code>JUMLAH</code>,
+          <code>PROGRESS BAR</code>.
+        </p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

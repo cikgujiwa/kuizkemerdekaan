@@ -1,0 +1,132 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #1a2230;
+  --muted: #4f5b6d;
+  --success-bg: #e9f8ef;
+  --success-text: #1d6a39;
+  --error-bg: #fdeeee;
+  --error-text: #8e1f1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.container {
+  width: min(820px, 92vw);
+  margin: 2rem auto;
+}
+
+header p {
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(18, 35, 70, 0.08);
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  font-size: 1rem;
+}
+
+.result,
+.error {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  border-radius: 8px;
+}
+
+.result {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.result h3,
+.result h4 {
+  margin: 0 0 0.5rem;
+}
+
+.summary {
+  margin: 0.25rem 0;
+}
+
+.monthly-list {
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+
+.monthly-list li {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #d7e5da;
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+}
+
+.progress-wrap {
+  margin-top: 0.75rem;
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background: #d4e8db;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #1d6a39;
+}
+
+.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.hidden {
+  display: none;
+}
+
+code {
+  background: #eef2f8;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+}
