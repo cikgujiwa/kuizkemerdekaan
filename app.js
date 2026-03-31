@@ -1,6 +1,8 @@
-// Tetapan Google Sheet
-// Jika guna pautan publish (pubhtml), isi PUBLISHED_SHEET_URL.
-// Jika kosong, aplikasi akan guna SHEET_ID biasa.
+// Tetapan sumber data (pilih salah satu)
+// 1) APPS_SCRIPT_URL (disyorkan untuk akaun MOE/private sheet)
+// 2) PUBLISHED_SHEET_URL (sheet publish ke web)
+// 3) SHEET_ID biasa
+const APPS_SCRIPT_URL = "";
 const PUBLISHED_SHEET_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTbyBR7o1fXIm5AuiZQnxTnmcLHT5wrR3zj0rFso_SmQ49XzgSx8oA-xkUzbh9C4SXPGOWjn4BeukZF/pubhtml?gid=0&single=true";
 const SHEET_ID = "";
@@ -116,6 +118,35 @@ function parseGoogleSheetResponse(rawText) {
   });
 }
 
+function normalizeRowsFromAppScript(rows) {
+  return rows.map((row) => {
+    const normalized = {};
+    Object.keys(row).forEach((key) => {
+      normalized[normalizeHeader(key)] = row[key];
+    });
+    return normalized;
+  });
+}
+
+function parsePayload(rawText) {
+  const trimmed = rawText.trim();
+
+  if (trimmed.startsWith("google.visualization.Query.setResponse")) {
+    return parseGoogleSheetResponse(trimmed);
+  }
+
+  const parsed = JSON.parse(trimmed);
+  if (Array.isArray(parsed)) {
+    return normalizeRowsFromAppScript(parsed);
+  }
+
+  if (Array.isArray(parsed.rows)) {
+    return normalizeRowsFromAppScript(parsed.rows);
+  }
+
+  return [];
+}
+
 function populateSelect(data) {
   memberSelect.innerHTML = '<option value="">-- Pilih nama --</option>';
 
@@ -129,7 +160,13 @@ function populateSelect(data) {
   memberSelect.disabled = false;
 }
 
-function buildGvizUrl() {
+function buildDataUrl() {
+  if (APPS_SCRIPT_URL) {
+    const scriptUrl = new URL(APPS_SCRIPT_URL);
+    scriptUrl.searchParams.set("sheet", SHEET_NAME);
+    return scriptUrl.toString();
+  }
+
   if (PUBLISHED_SHEET_URL) {
     const publishedUrl = new URL(PUBLISHED_SHEET_URL);
     const parts = publishedUrl.pathname.split("/").filter(Boolean);
@@ -137,22 +174,15 @@ function buildGvizUrl() {
     const publishedKey = parts[keyIndex];
     const gid = publishedUrl.searchParams.get("gid") || "0";
 
-    if (!publishedKey) {
-      throw new Error("PUBLISHED_SHEET_URL tidak sah.");
-    }
+    if (!publishedKey) throw new Error("PUBLISHED_SHEET_URL tidak sah.");
 
     const gvizUrl = new URL(`https://docs.google.com/spreadsheets/d/e/${publishedKey}/gviz/tq`);
     gvizUrl.searchParams.set("gid", gid);
-    if (SHEET_NAME) {
-      gvizUrl.searchParams.set("sheet", SHEET_NAME);
-    }
-
+    gvizUrl.searchParams.set("sheet", SHEET_NAME);
     return gvizUrl.toString();
   }
 
-  if (!SHEET_ID) {
-    throw new Error("Sila tetapkan PUBLISHED_SHEET_URL atau SHEET_ID dalam app.js.");
-  }
+  if (!SHEET_ID) throw new Error("Tetapkan APPS_SCRIPT_URL, PUBLISHED_SHEET_URL atau SHEET_ID.");
 
   return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${encodeURIComponent(
     SHEET_NAME
@@ -171,16 +201,16 @@ memberSelect.addEventListener("change", (event) => {
 async function loadData() {
   try {
     clearError();
-    const url = buildGvizUrl();
+    const url = buildDataUrl();
 
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const rawText = await response.text();
-    records = parseGoogleSheetResponse(rawText).filter((r) => r.nama);
+    records = parsePayload(rawText).filter((r) => r.nama);
 
     if (records.length === 0) {
-      showError("Tiada data nama dijumpai. Sila semak kolum NAMA pada Google Sheet.");
+      showError("Tiada data nama dijumpai. Sila semak kolum NAMA pada sumber data.");
       memberSelect.innerHTML = '<option>Tiada data</option>';
       return;
     }
@@ -188,7 +218,7 @@ async function loadData() {
     populateSelect(records);
   } catch (error) {
     showError(
-      "Gagal memuatkan data Google Sheet. Pastikan link publish, nama sheet, dan akses data adalah betul."
+      "Gagal memuatkan data. Semak APPS_SCRIPT_URL / link publish / SHEET_ID dan nama sheet."
     );
     memberSelect.innerHTML = '<option>Ralat memuatkan data</option>';
     console.error(error);
