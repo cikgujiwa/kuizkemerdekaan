@@ -2,7 +2,7 @@
 // 1) APPS_SCRIPT_URL (disyorkan untuk akaun MOE/private sheet)
 // 2) PUBLISHED_SHEET_URL (sheet publish ke web)
 // 3) SHEET_ID biasa
-const APPS_SCRIPT_URL = "";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyG86RW4y1iYwVKUuBT8Fu9u3KkDrNzV9qckorFf8JJ84E-r1LMyFFVR0OPZPpSpkSp/exec";
 const PUBLISHED_SHEET_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTbyBR7o1fXIm5AuiZQnxTnmcLHT5wrR3zj0rFso_SmQ49XzgSx8oA-xkUzbh9C4SXPGOWjn4BeukZF/pubhtml?gid=0&single=true";
 const SHEET_ID = "";

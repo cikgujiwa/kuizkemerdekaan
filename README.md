@@ -39,5 +39,6 @@ Aplikasi akan cuba sumber data ikut turutan ini:
 ## Konfigurasi semasa
 
 - `SHEET_NAME` ditetapkan kepada `BAYARAN YURAN`.
+- `APPS_SCRIPT_URL` telah diisi dengan URL Web App yang diberi.
 - `PUBLISHED_SHEET_URL` masih ada sebagai fallback.
 
