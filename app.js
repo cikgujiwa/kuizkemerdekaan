@@ -1,4 +1,5 @@
 // Tetapan Google Sheet
+// Contoh URL sheet: https://docs.google.com/spreadsheets/d/<SHEET_ID>/edit#gid=0
 const SHEET_ID = "GANTI_DENGAN_SHEET_ID";
 const SHEET_NAME = "Sheet1";
 

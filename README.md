@@ -10,6 +10,16 @@ Susunan kolum yang digunakan:
 
 > Nota: Nama kolum perlu sama seperti di atas.
 
+## Cara dapatkan `SHEET_ID`
+
+1. Buka Google Sheet anda.
+2. Lihat URL, contoh:
+   `https://docs.google.com/spreadsheets/d/1AbCdEfGhIJkLmNoPqRsTuVwXyZ1234567890/edit#gid=0`
+3. Nilai `SHEET_ID` ialah teks **di antara** `/d/` dan `/edit`.
+   - Untuk contoh di atas, `SHEET_ID` ialah `1AbCdEfGhIJkLmNoPqRsTuVwXyZ1234567890`
+4. Salin nilai itu ke `app.js`:
+   - `const SHEET_ID = "PASTE_SHEET_ID_DI_SINI";`
+
 ## Cara guna
 
 1. Buka fail `app.js`.
