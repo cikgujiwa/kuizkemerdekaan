@@ -10,23 +10,30 @@ Susunan kolum yang digunakan:
 
 > Nota: Nama kolum perlu sama seperti di atas.
 
-## Cara dapatkan `SHEET_ID`
+## Konfigurasi semasa (siap diisi)
 
-1. Buka Google Sheet anda.
-2. Lihat URL, contoh:
-   `https://docs.google.com/spreadsheets/d/1AbCdEfGhIJkLmNoPqRsTuVwXyZ1234567890/edit#gid=0`
-3. Nilai `SHEET_ID` ialah teks **di antara** `/d/` dan `/edit`.
-   - Untuk contoh di atas, `SHEET_ID` ialah `1AbCdEfGhIJkLmNoPqRsTuVwXyZ1234567890`
-4. Salin nilai itu ke `app.js`:
-   - `const SHEET_ID = "PASTE_SHEET_ID_DI_SINI";`
+- `PUBLISHED_SHEET_URL` telah diisi dengan pautan yang anda beri.
+- `SHEET_NAME` telah ditetapkan kepada `BAYARAN YURAN`.
+
+Jika anda tukar sheet lain pada masa depan, kemas kini nilai ini dalam `app.js`.
 
 ## Cara guna
 
-1. Buka fail `app.js`.
-2. Gantikan nilai `SHEET_ID` dengan ID Google Sheet anda.
-3. Ubah `SHEET_NAME` jika nama tab bukan `Sheet1`.
-4. Pastikan Google Sheet telah di-**Publish to web**.
-5. Buka `index.html` di pelayar.
+1. Pastikan Google Sheet telah di-**Publish to web**.
+2. Semak nilai dalam `app.js`:
+   - `PUBLISHED_SHEET_URL`
+   - `SHEET_NAME`
+3. Buka `index.html` di pelayar.
+
+## Pilihan konfigurasi alternatif
+
+Jika tak guna link publish (`/d/e/.../pubhtml`), anda boleh kosongkan `PUBLISHED_SHEET_URL` dan guna `SHEET_ID` biasa:
+
+```js
+const PUBLISHED_SHEET_URL = "";
+const SHEET_ID = "ID_SHEET_BIASA";
+const SHEET_NAME = "BAYARAN YURAN";
+```
 
 ## Apa yang dipaparkan
 
