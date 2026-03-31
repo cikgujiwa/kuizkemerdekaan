@@ -41,3 +41,18 @@ const SHEET_NAME = "BAYARAN YURAN";
 - Baki semasa (`BAKI 2025`)
 - Ringkasan bayaran bulanan (JAN hingga OKT)
 - Progress bar (jika kolum `PROGRESS BAR` ada nilai)
+
+
+## Untuk akaun MOE (akses terhad)
+
+Ya, **boleh guna `SHEET_ID`**, tapi ada syarat penting:
+
+- Jika sheet hanya boleh diakses warga MOE (tidak public), web statik biasa **tidak boleh** baca terus data itu dari browser tanpa mekanisme login/token.
+- `SHEET_ID` sahaja tidak cukup jika akses sheet masih private.
+
+Pilihan praktikal:
+
+1. **Publish to web** (paling mudah) jika polisi MOE benarkan.
+2. Guna **Google Apps Script Web App** sebagai perantara (output JSON), dan hadkan akses kepada domain MOE.
+3. Jika perlu kekal private sepenuhnya, guna backend sendiri yang pegang OAuth/service account dan web frontend panggil backend itu.
+
