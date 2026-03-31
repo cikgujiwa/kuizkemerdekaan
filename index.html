@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelab Kebajikan Sasera</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Kelab Kebajikan Sasera</h1>
+        <p>
+          Semak jumlah bayaran yuran yang telah dibayar oleh guru dan staf.
+        </p>
+      </header>
+
+      <section class="card" aria-labelledby="semak-yuran">
+        <h2 id="semak-yuran">Semakan Yuran</h2>
+
+        <div class="field">
+          <label for="memberSelect">Pilih nama guru / staf</label>
+          <select id="memberSelect" disabled>
+            <option>Memuatkan data...</option>
+          </select>
+        </div>
+
+        <div id="result" class="result hidden" aria-live="polite"></div>
+        <div id="error" class="error hidden" aria-live="assertive"></div>
+      </section>
+
+      <section class="card" aria-labelledby="panduan">
+        <h2 id="panduan">Panduan Sambungan Google Sheet</h2>
+        <ol>
+          <li>
+            Pastikan Google Sheet anda telah di-<strong>Publish to web</strong>.
+          </li>
+          <li>
+            Dalam fail <code>app.js</code>, tetapkan nilai
+            <code>SHEET_ID</code> dan <code>SHEET_NAME</code>.
+          </li>
+          <li>
+            Nama kolum yang disokong: <code>nama</code>, <code>jawatan</code>,
+            <code>jumlah_bayaran</code>.
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

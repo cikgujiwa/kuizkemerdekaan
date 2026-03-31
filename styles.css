@@ -1,0 +1,89 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #1a2230;
+  --muted: #4f5b6d;
+  --primary: #1453b8;
+  --success-bg: #e9f8ef;
+  --success-text: #1d6a39;
+  --error-bg: #fdeeee;
+  --error-text: #8e1f1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.container {
+  width: min(760px, 92vw);
+  margin: 2rem auto;
+}
+
+header h1 {
+  margin-bottom: 0.2rem;
+}
+
+header p {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(18, 35, 70, 0.08);
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  font-size: 1rem;
+}
+
+.result,
+.error {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  border-radius: 8px;
+}
+
+.result {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.hidden {
+  display: none;
+}
+
+code {
+  background: #eef2f8;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+}
