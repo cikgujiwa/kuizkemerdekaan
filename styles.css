@@ -4,7 +4,6 @@
   --card: #ffffff;
   --text: #1a2230;
   --muted: #4f5b6d;
-  --primary: #1453b8;
   --success-bg: #e9f8ef;
   --success-text: #1d6a39;
   --error-bg: #fdeeee;
@@ -23,16 +22,11 @@ body {
 }
 
 .container {
-  width: min(760px, 92vw);
+  width: min(820px, 92vw);
   margin: 2rem auto;
 }
 
-header h1 {
-  margin-bottom: 0.2rem;
-}
-
 header p {
-  margin-top: 0;
   color: var(--muted);
 }
 
@@ -71,6 +65,55 @@ select {
 .result {
   background: var(--success-bg);
   color: var(--success-text);
+}
+
+.result h3,
+.result h4 {
+  margin: 0 0 0.5rem;
+}
+
+.summary {
+  margin: 0.25rem 0;
+}
+
+.monthly-list {
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+
+.monthly-list li {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #d7e5da;
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+}
+
+.progress-wrap {
+  margin-top: 0.75rem;
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background: #d4e8db;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #1d6a39;
 }
 
 .error {

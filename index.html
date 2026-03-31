@@ -11,12 +11,12 @@
       <header>
         <h1>Kelab Kebajikan Sasera</h1>
         <p>
-          Semak jumlah bayaran yuran yang telah dibayar oleh guru dan staf.
+          Semakan yuran guru dan staf berdasarkan rekod Google Sheet rasmi.
         </p>
       </header>
 
       <section class="card" aria-labelledby="semak-yuran">
-        <h2 id="semak-yuran">Semakan Yuran</h2>
+        <h2 id="semak-yuran">Semakan Yuran 2025</h2>
 
         <div class="field">
           <label for="memberSelect">Pilih nama guru / staf</label>
@@ -30,20 +30,15 @@
       </section>
 
       <section class="card" aria-labelledby="panduan">
-        <h2 id="panduan">Panduan Sambungan Google Sheet</h2>
-        <ol>
-          <li>
-            Pastikan Google Sheet anda telah di-<strong>Publish to web</strong>.
-          </li>
-          <li>
-            Dalam fail <code>app.js</code>, tetapkan nilai
-            <code>SHEET_ID</code> dan <code>SHEET_NAME</code>.
-          </li>
-          <li>
-            Nama kolum yang disokong: <code>nama</code>, <code>jawatan</code>,
-            <code>jumlah_bayaran</code>.
-          </li>
-        </ol>
+        <h2 id="panduan">Format Google Sheet yang digunakan</h2>
+        <p>Aplikasi ini membaca kolum berikut:</p>
+        <p>
+          <code>BIL</code>, <code>NAMA</code>, <code>BAKI 2025</code>,
+          <code>JAN</code>, <code>FEB</code>, <code>MAC</code>, <code>APR</code>,
+          <code>MEI</code>, <code>JUN</code>, <code>JUL</code>, <code>OGO</code>,
+          <code>SEP</code>, <code>OKT</code>, <code>JUMLAH</code>,
+          <code>PROGRESS BAR</code>.
+        </p>
       </section>
     </main>
 
