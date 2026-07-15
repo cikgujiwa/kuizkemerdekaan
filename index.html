@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Misi 5 Buku Pusat Sumber</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Gamifikasi Interaktif Pusat Sumber Sekolah</p>
+          <h1>Misi 5 Buku: Pemburu Sijil NILAM</h1>
+          <p class="hero-copy">Murid membaca 5 buku, mengumpul mata melalui cabaran sensor, dan membuka sijil digital apabila semua misi selesai.</p>
+        </div>
+        <div class="certificate-card" id="certificateCard">
+          <span>Sijil Terkunci</span>
+          <strong>0 / 5 Buku</strong>
+        </div>
+      </section>
+
+      <section class="dashboard" aria-label="Papan skor murid">
+        <article class="score-card"><span>Mata</span><strong id="score">0</strong></article>
+        <article class="score-card"><span>Lencana</span><strong id="badge">Pembaca Baru</strong></article>
+        <article class="score-card"><span>Streak</span><strong id="streak">0 hari</strong></article>
+      </section>
+
+      <section class="mission-panel">
+        <div class="panel-heading">
+          <h2>Jejak 5 Buku</h2>
+          <p>Lengkapkan setiap buku dengan rumusan, kuiz mini dan cabaran sensor.</p>
+        </div>
+        <div class="books" id="books"></div>
+      </section>
+
+      <section class="interactive-zone">
+        <article class="challenge-card">
+          <h2>Cabaran Sensor: Goncang Rak Ilmu</h2>
+          <p>Aktifkan sensor gerakan telefon. Goncang peranti atau tekan butang simulasi untuk mencari “permata ilmu” dan menambah mata bonus.</p>
+          <div class="sensor-meter" aria-live="polite">
+            <div id="sensorNeedle"></div>
+          </div>
+          <p id="sensorStatus">Sensor belum diaktifkan.</p>
+          <button id="enableSensor">Aktifkan Sensor</button>
+          <button class="secondary" id="simulateShake">Simulasi Goncangan</button>
+        </article>
+
+        <article class="challenge-card">
+          <h2>Stesen Imbas Pustakawan</h2>
+          <p>Guru pustakawan boleh menaip kod buku atau murid boleh imbas kod QR melalui sistem sekolah untuk mengesahkan bacaan.</p>
+          <label for="bookCode">Kod buku</label>
+          <div class="code-row">
+            <input id="bookCode" placeholder="Contoh: BUKU-RAKYAT" />
+            <button id="verifyCode">Sahkan</button>
+          </div>
+          <p class="hint">Kod demo: BUKU-RAKYAT, BUKU-SAINS, BUKU-SEJARAH, BUKU-CERITA, BUKU-INOVASI</p>
+        </article>
+      </section>
+
+      <section class="reflection-panel">
+        <h2>Rumusan Kreatif</h2>
+        <p>Tulis satu nilai murni atau fakta menarik daripada buku terakhir yang dibaca untuk mendapat 20 mata.</p>
+        <textarea id="reflection" maxlength="180" placeholder="Saya belajar bahawa..."></textarea>
+        <button id="submitReflection">Hantar Rumusan</button>
+      </section>
+    </main>
+
+    <dialog id="certificateDialog">
+      <h2>Tahniah, Pembaca Hebat!</h2>
+      <p>Anda telah membaca 5 buku dan memperoleh Sijil Pemburu Ilmu Pusat Sumber.</p>
+      <button id="closeDialog">Teruskan Bermain</button>
+    </dialog>
+
+    <script src="src/app.js"></script>
+  </body>
+</html>
